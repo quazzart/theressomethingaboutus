@@ -23,8 +23,6 @@ $(document).ready(function () {
             return;
         }
 
-        let prev = e.offset()
-
         do {
             // Make random values
             let x = Math.random() * (window.innerWidth - e.outerWidth()),
@@ -39,7 +37,7 @@ $(document).ready(function () {
         } while (areOverlapping(e, yes, 20))
     })
 
-    $('#yes').click(function (evt) {
+    $('#yes').click(function () {
         $('.removeMe').fadeOut(400, function () {
             $(this).remove()
             $('.proposal').fadeIn(400)
