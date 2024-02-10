@@ -1,0 +1,165 @@
+html, body {
+    /*all: unset;*/
+    overflow: hidden;
+}
+
+html {
+    --moon-size: calc(0.75 * min(100dvw, 100dvh));
+    background-color: black;
+
+    font-family: Arial, sans-serif;
+}
+
+html, body, input, div, button {
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+.container {
+    width: 100dvw;
+    height: 100dvh;
+
+    overflow: hidden;
+
+    color: rgba(255, 255, 255);
+}
+
+.moon {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+
+
+    background-image: url("moon.png");
+    background-size: var(--moon-size) auto;
+    background-repeat: no-repeat;
+    background-position-x: calc(50dvw - calc(0.5 * var(--moon-size)) * 1.07);
+    background-position-y: calc(50dvh - calc(0.5 * var(--moon-size)));
+
+    /* Tint */
+    -webkit-filter: grayscale(1) brightness(0.7);
+    filter: grayscale(1) brightness(0.7);
+    /*-webkit-filter: brightness(1) grayscale(1) sepia(0) hue-rotate(0) brightness(1) saturate(1) contrast(1);*/
+    /*filter: brightness(1) grayscale(1) sepia(0) hue-rotate(0) brightness(1) saturate(1) contrast(1);*/
+    /*transition: filter 0.3s;*/
+}
+
+.moon.red {
+    /* Tint */
+    /*-webkit-filter: brightness(0.5) grayscale(1) sepia(0.9) hue-rotate(-45deg) brightness(0.7) saturate(6) contrast(1.3) drop-shadow(8px -2px 6px #ff0000);*/
+    /*filter: brightness(0.5) grayscale(1) sepia(0.9) hue-rotate(-45deg) brightness(0.7) saturate(6) contrast(1.3) drop-shadow(8px -2px 6px #ff0000);*/
+    /*transition: filter .7s 50ms;*/
+}
+
+.moon.green {
+    /* Tint */
+    /*-webkit-filter: brightness(0.5) grayscale(1) sepia(0.9) hue-rotate(+45deg) brightness(1.4) saturate(4) contrast(1.3) drop-shadow(8px -2px 6px #00ff00);*/
+    /*filter: brightness(0.5) grayscale(1) sepia(0.9) hue-rotate(+45deg) brightness(1.4) saturate(4) contrast(1.3) drop-shadow(8px -2px 6px #00ff00);*/
+    /*transition: filter .7s 50ms;*/
+}
+
+.button {
+    font-size: calc(var(--moon-size) * 0.1);
+    color: inherit;
+    text-transform: uppercase;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    position: absolute;
+    top: 50dvh;
+    transform: translate(-50%, -50%);
+    width: 2.4em;
+    height: 2.4em;
+
+    /* Overlap protection */
+    margin: 0 0.2em 0.2em 0;
+
+    cursor: pointer;
+
+    background: transparent no-repeat;
+    outline: none;
+    border: 0.085em solid;
+    border-radius: 0.6em;
+}
+
+#no {
+    left: calc(50dvw - var(--moon-size) * 0.2);
+    border-color: #ff3a3a;
+}
+
+#yes {
+    left: calc(50dvw + var(--moon-size) * 0.2);
+    border-color: #32da32;
+}
+
+.button:hover, .button:focus, .button:active {
+    /*background: aqua;*/
+}
+
+.prompt {
+    width: 100%;
+    text-align: center;
+
+    font-size: calc(var(--moon-size) * 0.1);
+    margin-top: calc((100dvh - var(--moon-size)) * 0.25);
+    transform: translateY(-50%);
+}
+
+.proposal {
+    font-size: calc(var(--moon-size) * 0.035);
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.proposal > div {
+    position: absolute;
+    left: 50dvw;
+    transform: translate(-50%, -50%);
+}
+
+.proposal p, h1 {
+    margin: 0;
+    width: 100dvw;
+}
+
+.proposal > .top {
+    font-size: 1.8em;
+    line-height: 1.4em;
+    top: calc((100dvh - var(--moon-size)) * 0.25);
+}
+
+.proposal > .middle-top {
+    font-size: 1em;
+    top: calc(50dvh - var(--moon-size) * 0.25);
+}
+
+.proposal > .middle {
+    top: 50dvh;
+    font-size: 5em;
+    font-weight: bold;
+}
+
+.proposal > .bottom {
+    font-size: 1.8em;
+    line-height: 1.4em;
+    top: calc(75dvh + var(--moon-size) * 0.25);
+}
+
+/* Debug */
+/*
+.line1 {
+    position: absolute;
+    background-color: #00FF00;
+}
+
+.line2 {
+    position: absolute;
+    background-color: #FFFF00;
+}
+*/
