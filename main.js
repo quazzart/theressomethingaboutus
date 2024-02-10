@@ -1,15 +1,28 @@
 const DEBUG = false
 
 $(document).ready(function () {
-    $('#no').bind('touchstart mouseenter', function () {
-        $('.moon')
-            .removeClass('green')
-            .addClass('red')
-    }).bind('touchend mouseleave', function () {
-        $('.moon').removeClass('red')
-    }).bind('touchstart mousedown', function () {
+    let noTimes = 0
+    let noForSure = false
+
+    $('#no').bind('touchstart mousedown', function () {
+        if (noForSure) {
+            return
+        }
+
         let yes = $('#yes')
         let e = $(this)
+
+        if (noTimes++ > 15) {
+            noForSure = true
+
+            $('.moon').addClass('red')
+            yes.remove()
+            e.css('left', window.innerWidth * 0.5)
+                .css('top', window.innerHeight * 0.5)
+
+            return;
+        }
+
         let prev = e.offset()
 
         do {
@@ -24,18 +37,10 @@ $(document).ready(function () {
             // Move to random location
             e.css("left", x).css("top", y)
         } while (areOverlapping(e, yes, 20))
-
-        $('.moon').removeClass('red', 'green')
     })
 
-    $('#yes').bind('touchstart mouseenter', function () {
-        $('.moon')
-            .removeClass('red')
-            .addClass('green')
-    }).bind('touchend mouseleave', function () {
-        $('.moon').removeClass('green')
-    }).click(function(evt) {
-        $('.removeMe').fadeOut(400, function() {
+    $('#yes').click(function (evt) {
+        $('.removeMe').fadeOut(400, function () {
             $(this).remove()
             $('.proposal').fadeIn(400)
         })
