@@ -12,7 +12,7 @@ $(document).ready(function () {
         let yes = $('#yes')
         let e = $(this)
 
-        if (noTimes++ > 15) {
+        if (++noTimes >= 15) {
             noForSure = true
 
             $('.moon').addClass('red')
