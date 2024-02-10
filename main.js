@@ -7,7 +7,7 @@ $(document).ready(function () {
             .addClass('red')
     }).bind('touchend mouseleave', function () {
         $('.moon').removeClass('red')
-    }).bind('touchend mousedown', function () {
+    }).bind('touchstart mousedown', function () {
         let yes = $('#yes')
         let e = $(this)
         let prev = e.offset()
@@ -35,8 +35,10 @@ $(document).ready(function () {
     }).bind('touchend mouseleave', function () {
         $('.moon').removeClass('green')
     }).click(function(evt) {
-        $('.removeMe').remove()
-        $('.proposal').show()
+        $('.removeMe').fadeOut(400, function() {
+            $(this).remove()
+            $('.proposal').fadeIn(400)
+        })
     })
 
     $(window).on('resize', function () {
