@@ -5,6 +5,7 @@ html, body {
 
 html {
     --moon-size: calc(0.75 * min(100dvw, 100dvh));
+    --space-height: calc(100dvh - var(--moon-size));
     background-color: black;
 
     font-family: Arial, sans-serif;
@@ -40,8 +41,8 @@ html, body, input, div, button {
     background-position-y: calc(50dvh - calc(0.5 * var(--moon-size)));
 
     /* Tint */
-    -webkit-filter: grayscale(1) brightness(0.7);
-    filter: grayscale(1) brightness(0.7);
+    -webkit-filter: grayscale(1) brightness(0.9);
+    filter: grayscale(1) brightness(0.9);
     /*-webkit-filter: brightness(1) grayscale(1) sepia(0) hue-rotate(0) brightness(1) saturate(1) contrast(1);*/
     /*filter: brightness(1) grayscale(1) sepia(0) hue-rotate(0) brightness(1) saturate(1) contrast(1);*/
     /*transition: filter 0.3s;*/
@@ -65,6 +66,7 @@ html, body, input, div, button {
     font-size: calc(var(--moon-size) * 0.1);
     color: inherit;
     text-transform: uppercase;
+    text-shadow: black 0 0 0.1em;
 
     display: flex;
     justify-content: center;
@@ -82,10 +84,11 @@ html, body, input, div, button {
 
     cursor: pointer;
 
-    background: transparent no-repeat;
+    background: rgba(0, 0, 0, 0.25) no-repeat;
     outline: none;
     border: 0.085em solid;
     border-radius: 0.6em;
+    box-shadow: black 0 0 0.1em;
 }
 
 #no {
@@ -115,6 +118,7 @@ html, body, input, div, button {
     font-size: calc(var(--moon-size) * 0.035);
     text-align: center;
     line-height: 1.5em;
+    width: 100dvw;
 }
 
 .proposal > div {
@@ -125,13 +129,15 @@ html, body, input, div, button {
 
 .proposal p, h1 {
     margin: 0;
-    width: 100dvw;
+    width: 100%;
+    text-shadow: black 0 0 1dvh;
 }
 
 .proposal > .top {
-    font-size: 1.8em;
-    line-height: 1.4em;
     top: calc((100dvh - var(--moon-size)) * 0.25);
+    width: 18em;
+    font-size: 1.2em;
+    line-height: 1.4em;
 }
 
 .proposal > .middle-top {
@@ -146,9 +152,17 @@ html, body, input, div, button {
 }
 
 .proposal > .bottom {
-    font-size: 1.8em;
-    line-height: 1.4em;
+    width: 17em;
+    font-size: 1.2em;
     top: calc(75dvh + var(--moon-size) * 0.25);
+    line-height: 1.4em;
+}
+
+@media (orientation: portrait) {
+    .proposal > .top, .bottom {
+        font-size: 1.7em !important;
+        line-height: 1.4em;
+    }
 }
 
 /* Debug */
